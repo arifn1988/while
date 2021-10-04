@@ -28,10 +28,17 @@ def count_joeys(facts):
         if('joey' in x):
             joey_facts.append(x)
 
-    return joey_facts
+    return len(set(joey_facts))
 
 def num_joey_facts():
-    count_joeys(unique_koala_facts(100))
+    facts=[]
+
+    while True:
+        random_fact = random_koala_fact()
+        if(facts.count(random_fact)==10):
+            return count_joeys(facts)
+        elif(facts.count(random_fact)<10):
+            facts.append(random_fact)
 
 
 def koala_weight():
@@ -39,7 +46,6 @@ def koala_weight():
     weight=""
     for x in facts:
         if ('kg' in x):
-            print(x)
             weight=x[x.find('kg')-2:x.find('kg')]
 
     return int(weight)
@@ -48,6 +54,4 @@ def koala_weight():
 # It is not run if you import this file as a module.
 if __name__ == '__main__':
 
-#    print(koala_weight())
-   iterate_list(num_joey_facts())
-#    iterate_list(unique_koala_facts(90))
+    print()
